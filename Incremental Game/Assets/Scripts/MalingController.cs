@@ -34,11 +34,12 @@ public class MalingController : MonoBehaviour
         {
             malingObj.SetActive(true);
             MalingSound.PlayOneShot(MalingSound.clip);
-            double currentGold = GameManager.Instance.TotalGold / 10;
+            double currentGold = UserDataManager.Progress.Gold / 10;
 
-            GameManager.Instance.TotalGold -= currentGold * Time.deltaTime;
+            UserDataManager.Progress.Gold -= currentGold * Time.deltaTime;
 
             infoMaling.text = $" Awas Uangmu Berkurang Sekitar {currentGold.ToString("0")}!";
+            UserDataManager.Save();
         }
         else
         {
